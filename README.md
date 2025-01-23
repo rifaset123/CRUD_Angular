@@ -54,6 +54,15 @@ ng e2e
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
+## Additional Installation Libraries
+
+To enhance the functionality of your project, the following libraries have been installed:
+
+- `npm i ngx-toastr`: For displaying customizable toast notifications.
+- `npm install --save @angular/material`: For integrating Angular Material components.
+- `npm install flatpickr angularx-flatpickr`: For date-picking functionality (currently unused but installed).
+
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
