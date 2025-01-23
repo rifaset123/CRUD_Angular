@@ -43,16 +43,13 @@ export class PostStudentComponent {
 
   postStudent() {
     if (this.postStudentForm.valid) {
-      // Call the API to post the student data
       this.studentService.postStudent(this.postStudentForm.value).subscribe({
         next: (res) => {
-          console.log(res);
           this.notificationService.showSuccess('Student created successfully!');
           this.postStudentForm.reset();
           this.router.navigateByUrl('/');
         },
         error: (err) => {
-          console.error(err);
           this.notificationService.showError('Something went wrong!');
         },
       });

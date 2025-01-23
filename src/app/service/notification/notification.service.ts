@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
-  providedIn: 'root', // This makes the service globally available
+  providedIn: 'root', // singleton service
 })
 export class NotificationService {
   constructor(private toastr: ToastrService) {}

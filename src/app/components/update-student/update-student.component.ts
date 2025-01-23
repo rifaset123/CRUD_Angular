@@ -42,7 +42,6 @@ export class UpdateStudentComponent {
   getStudentById() {
     this.studentService.getAllStudentById(this.id).subscribe({
       next: (res) => {
-        console.log(res);
         this.updateStudentForm.patchValue(res);
       },
       error: (err) => {
@@ -64,7 +63,6 @@ export class UpdateStudentComponent {
             this.notificationService.showSuccess('Student updated!');
           },
           error: (err) => {
-            console.error(err);
             this.notificationService.showError('Something went wrong! ');
           },
         });
@@ -78,12 +76,10 @@ export class UpdateStudentComponent {
   deleteStudent() {
     this.studentService.deleteStudent(this.id).subscribe({
       next: (res) => {
-        console.log(res);
         this.notificationService.showSuccess('Student deleted!');
         this.router.navigateByUrl('');
       },
       error: (err) => {
-        console.error(err);
         this.notificationService.showError('Something went wrong! ');
       },
     });

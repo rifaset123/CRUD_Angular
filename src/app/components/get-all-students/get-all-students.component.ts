@@ -28,7 +28,6 @@ export class GetAllStudentsComponent {
   getAllStudents() {
     this.studentService.getAllStudent().subscribe({
       next: (res) => {
-        console.log(res);
         this.students = res;
       },
       error: (err) => {
@@ -44,25 +43,13 @@ export class GetAllStudentsComponent {
     return Math.abs(ageDate.getUTCFullYear() - 1970); // tahun awal komputer 1970 (epoch time)
   }
 
-  // Method to open the modal and set selected student data
-  openUpdateModal(student: any): void {
-    this.selectedStudent = { ...student }; // Store the selected student's data
-    // The selected student data is now available in selectedStudent for binding in the modal
-  }
-
-  saveChanges(): void {
-    console.log('Updated Student:', this.selectedStudent);
-  }
-
   deleteStudent(id: number) {
     this.studentService.deleteStudent(id).subscribe({
       next: (res) => {
-        console.log(res);
         this.getAllStudents();
         this.notificationService.showSuccess('Student deleted!');
       },
       error: (err) => {
-        console.error(err);
         this.notificationService.showError('Something went wrong! ');
       },
     });
