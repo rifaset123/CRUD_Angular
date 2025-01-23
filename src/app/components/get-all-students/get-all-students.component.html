@@ -1,5 +1,4 @@
 <div class="container mt-5">
-  <!-- Card for Student List -->
   <div class="card shadow">
     <div
       class="card-header bg-primary text-white d-flex justify-content-between align-items-center"
@@ -41,6 +40,7 @@
                 class="btn btn-danger btn-sm"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
+                (click)="setSelectedStudent(student)"
               >
                 Delete
               </button>
@@ -82,7 +82,7 @@
                         type="button"
                         class="btn btn-danger"
                         data-bs-dismiss="modal"
-                        (click)="deleteStudent(student.id)"
+                        (click)="deleteStudent(selectedStudent?.id)"
                       >
                         Delete
                       </button>
@@ -94,7 +94,6 @@
           </tr>
         </tbody>
       </table>
-      <!-- No students fallback -->
       <ng-template #noStudentsFallback>
         <div class="alert alert-warning text-center">
           No students found. Please add a new student.

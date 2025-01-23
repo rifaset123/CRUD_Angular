@@ -10,11 +10,11 @@ import { NotificationService } from '../../service/notification/notification.ser
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './get-all-students.component.html',
-  styleUrl: './get-all-students.component.css',
+  styleUrls: ['./get-all-students.component.css'],
 })
 export class GetAllStudentsComponent {
   students: any = [];
-  selectedStudent: any = {};
+  selectedStudent: any = {}; // data for selected student
 
   constructor(
     private studentService: StudentService,
@@ -32,6 +32,7 @@ export class GetAllStudentsComponent {
       },
       error: (err) => {
         console.error(err);
+        this.notificationService.showError('Failed to fetch students!');
       },
     });
   }
@@ -40,17 +41,22 @@ export class GetAllStudentsComponent {
     const birthDateObj = new Date(birthDate);
     const ageDifMs = Date.now() - birthDateObj.getTime();
     const ageDate = new Date(ageDifMs);
-    return Math.abs(ageDate.getUTCFullYear() - 1970); // tahun awal komputer 1970 (epoch time)
+    return Math.abs(ageDate.getUTCFullYear() - 1970); // waktu default mesin adalah 1970
+  }
+
+  setSelectedStudent(student: any) {
+    this.selectedStudent = student;
   }
 
   deleteStudent(id: number) {
     this.studentService.deleteStudent(id).subscribe({
-      next: (res) => {
+      next: () => {
         this.getAllStudents();
-        this.notificationService.showSuccess('Student deleted!');
+        this.notificationService.showSuccess('Student deleted successfully!');
       },
       error: (err) => {
-        this.notificationService.showError('Something went wrong! ');
+        console.error(err);
+        this.notificationService.showError('Failed to delete student!');
       },
     });
   }
