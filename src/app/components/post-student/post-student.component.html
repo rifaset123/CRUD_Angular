@@ -1,0 +1,62 @@
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header bg-warning text-white">
+      <h4 class="mb-0">Post New Student</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="postStudentForm" (ngSubmit)="postStudent()">
+        <div class="mb-3">
+          <label for="nim" class="form-label">NIM</label>
+          <input
+            type="text"
+            id="nim"
+            name="nim"
+            class="form-control"
+            required
+            formControlName="nim"
+            placeholder="xx/xxxxx/xx/xxxxx"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="namaDepan" class="form-label">First Name</label>
+          <input
+            type="text"
+            id="namaDepan"
+            name="namaDepan"
+            class="form-control"
+            required
+            formControlName="namaDepan"
+            placeholder="Rifa"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="namaBelakang" class="form-label">Last Name</label>
+          <input
+            type="text"
+            id="namaBelakang"
+            name="namaBelakang"
+            class="form-control"
+            required
+            formControlName="namaBelakang"
+            placeholder="Indra Setiawan"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tanggalLahir" class="form-label">Date of Birth</label>
+          <input
+            type="date"
+            id="tanggalLahir"
+            name="tanggalLahir"
+            class="form-control"
+            required
+            formControlName="tanggalLahir"
+            [max]="today"
+          />
+        </div>
+        <div class="text-end">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
